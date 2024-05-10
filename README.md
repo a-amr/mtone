@@ -1,20 +1,8 @@
-# mergeinputs
+Ckath/mergeinputs.
 
-# Fork of https://github.com/Ckath/mergeinputs.
+This repo is a fork  of Ckath/mergeinputs.
 
-This repo is a fork to resolve the problem I was having with kmonad.
 
-I bought a new mechanical keyboard and wanted to make some scripts and layers for it, but I found out that many keyboards and mice split the usb device into 2 or 3 different input devices under /dev/input
-
-This fork will allow you to combine multiple keyboards into one and specify a path for the input event rather than using a randomly generated name under /dev/input/eventX where X is some number.
-
-This allows you to be able to combine the two input devices and access it via the symlinked input event path in kmonad. This is useful so the path will stay static as to not cause problems with the kmonad config file.
-
-Multiple mergeinputs can be ran at once either by spawning a script or modifying the service to conform to your needs.
-
-Some of the information below is irrelevant. I might update it in the future to match the patches I made.
-
----
 
 ## usage
 
@@ -37,18 +25,4 @@ this means any application will only see one keyboard (`merged inputs`) pressing
 
 `make install`
 
-## auto-start and reload on device change
-
-To start the utility on every boot, a sample systemd unit is provided:
-
-```plain
-sudo cp mergeinputs.service /etc/systemd/system
-sudo systemctl enable --now mergeinputs
-```
-
-If you want to restart mergeinputs on device changes to handle hotplugging of keyboards, use the mergeinputs-restart units:
-
-```plain
-sudo cp mergeinputs-restart.* /etc/systemd/system
-sudo systemctl enable --now mergeinputs-restart.path
-```
+there is no systemd service for the app this is an independent linux app that work in any distro with any init 
