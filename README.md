@@ -1,8 +1,8 @@
+What is mtone?
 
+MTONE stands for Multi to One, which enables all keyboards to act as one keyboard in Linux.
 
-this app make using multiple keyboard with same machine work flowlessly 
-without it you can't for example press shift in keybaord and press key on other keyboard 
-also some cheap split keybaords wouldn't work duo to the design of the kernel driver
+This app makes using multiple keyboards with the same machine workflow flawlessly. Without it, for example, you can't press shift on one keyboard and press a key on another keyboard. Also, some cheap split keyboards wouldn't work due to the design of the kernel driver.
 
 ## usage
 
@@ -12,18 +12,20 @@ simply
  mergeinputs /dev/input/by-path/*-kbd
 ```
 
-depending on your distro you might either need the `input` group or run mergeinputs as root.
+you might either need the `input` group or run mergeinputs as root.
+to add to input 
+```sudo usermod -aG  input yourusername 
+```
 
 ## but how does it work?
+by Leveraging the uinput module, Mergeinputs is able to sit before any userspace input drivers:
 
-leveraging the uinput module, mergeinputs is able to sit before any userspace input drivers:
+/dev/input/eventx /dev/input/eventy -> Mergeinputs grabs all key events -> "merged input" device -> input drivers -> userspace applications
 
-`/dev/input/eventx /dev/input/eventy -> mergeinputs grabs all key events -> "merged input" device -> input drivers -> userspace applications`
-
-this means any application will only see one keyboard (`merged inputs`) pressing keys, eliminating any issues multiple devices might've caused.
+This means any application will only see one keyboard (merged inputs) pressing keys, eliminating any issues multiple devices might have caused.
 
 ## install
 
 `make install`
 
-there is no systemd service for the app this is an independent linux app that work in any distro with any init 
+There is no systemd service for the app. This is an independent Linux app that works on any distro with any init.
