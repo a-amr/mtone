@@ -1,6 +1,4 @@
-# see LICENSE file for copyright and license information.
-
-NAME=mergeinputs
+NAME=mtone
 LIBS = -lpthread
 SRC = ${NAME}.c
 OBJ = ${SRC:.c=.o}

@@ -1,14 +1,15 @@
-Ckath/mergeinputs.
-
-This repo is a fork  of Ckath/mergeinputs.
 
 
+this app make using multiple keyboard with same machine work flowlessly 
+without it you can't for example press shift in keybaord and press key on other keyboard 
+also some cheap split keybaords wouldn't work duo to the design of the kernel driver
 
 ## usage
 
-```plain
 mergeinputs inputeventpaths
-example to merge all keyboards: mergeinputs /dev/input/by-path/*-kbd
+simply
+```plain
+ mergeinputs /dev/input/by-path/*-kbd
 ```
 
 depending on your distro you might either need the `input` group or run mergeinputs as root.
